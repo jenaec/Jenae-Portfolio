@@ -1,0 +1,35 @@
+#In this SQL, I am querying a database that contains multiple tables to quantify statistics about customer and sales data.
+
+
+#1. How many orders were placed in May?
+SELECT COUNT (orderid)
+FROM sales_april_2019
+WHERE length (orderid) = 6
+AND orderid <> 'Order ID'
+
+#2. How many orders were for Headphones?
+SELECT COUNT(orderid)
+FROM sales_april_2019
+WHERE product="headphones"
+AND length(orderid) = 6
+AND orderid <> 'Order ID'
+
+#3. What was the cheapest product sold, and what was the price?
+SELECT product, price
+FROM sales_april_2019
+WHERE price in (SELECT min(price) FROM sales_april_2019)
+
+#4. What is the total revenue for all products sold in April?
+SELECT sum(quantity)*price as revenue
+,product
+FROM sales_april_2019
+GROUP BY product
+
+#5. Which products were sold to 886 Jefferson St, New York City, New York, 10001? How many of each were sold, and what was the total revenue?
+SELECT
+sum(quantity),
+product,
+sum(quantity)*price as revenue
+FROM sales_april_2019
+WHERE location = '886 Jefferson St, New York City, New York, 10001'
+GROUP BY product
