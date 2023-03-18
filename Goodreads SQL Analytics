@@ -1,0 +1,37 @@
+#For this project, I downloaded Goodreads data from Kaggle.
+#Next, I created a table to insert the data into.
+#Last, I performed analystics on the data using SQL.
+
+#To create the table:
+CREATE TABLE books
+(
+id INTEGER PRIMARY KEY,
+title VARCHAR(30),
+author_name VARCHAR(30),
+average_rating DECIMAL(3, 2) NOT NULL
+number_of_pages INTEGER NOT NULL,
+publisher VARCHAR(30),
+ratings_count INTEGER NOT NULL,
+);
+
+#Then I inserted the Goodreads data .csv into the table.
+
+#Next, I explored the data using the following SQL
+
+#First, I determind the average rating, number of pages, and ratings count
+
+SELECT
+author_name,
+title,
+,avg(average_rating)
+,avg(number_of_pages)
+,avg(ratings_count)
+
+FROM books
+GROUP BY author_name, title
+
+#Then I determined the who the top 5 highest rated authors on Goodreads were
+SELECT title, author_name, average_rating
+FROM books
+ORDER BY average rating
+LIMIT 5
