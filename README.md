@@ -1,2 +1,2 @@
-# Jenae-s-Portfolio
-This portfolio contains samples from Jenae Cotton.
+# Jenae-Portfolio
+This portfolio contains SQL samples from projects worked on by Jenae Cotton.
